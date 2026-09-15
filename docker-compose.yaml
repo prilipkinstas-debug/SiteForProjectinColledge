@@ -78,4 +78,4 @@ volumes:
 
 networks:
   app_networks:
-    drive: bridge
+
