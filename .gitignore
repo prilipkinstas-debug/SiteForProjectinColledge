@@ -1,5 +1,4 @@
 *.yml
-*.yaml
 *.env
 *.env.local
 dockerfile
