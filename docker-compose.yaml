@@ -10,7 +10,7 @@ services:
     volumes:
       - mssql_data:/var/opt/mssql
     healthcheck:
-      test: ["CMD-SHEll", "/opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P qweR12345678 -C -Q 'SELECT 1' || exit 1"]
+      test: ["CMD-SHELL", "/opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P qweR12345678 -C -Q 'SELECT 1' || exit 1"]
       interval: 20s
       timeout: 5s
       retries: 10
@@ -20,7 +20,7 @@ services:
     image: golang:1.22-alpine
     working_dir: /app
     volumes:
-      -./go:/app
+      - ./go:/app
     command: >
       sh -c "go mod tidy && go run main.go"
     env_file:
@@ -30,7 +30,9 @@ services:
       - DB_USER=02cm
       - DB_PASSWORD=Portujhkc97Porno!
     depends_on:
-      - mssql
+      mssql:
+        condition: service_healthy
+
     networks:
       - app_networks
         
@@ -38,7 +40,7 @@ services:
     image: python:3.11-slim
     working_dir: /app
     volumes:
-      -./python:/app
+      - ./python:/app
     command: bash -c "pip install pymssql && python app.py"
     env_file:
       - ./PasswordFile.env
@@ -47,30 +49,17 @@ services:
       - DB_USER=Specialist
       - DB_PASSWORD=d8k1s4f9s12g1!@
     depends_on:
-      - mssql
+      mssql:
+        condition: service_healthy
     networks:
       - app_networks
-  php-service:
-    build: .
-    depends_on:
-      - mssql
-    volumes:
-      -./php:/var/www/html
-    env_file:
-      - ./PasswordFile.env
-    environment:
-      - DB_HOST=mssql
-      - DB_USER=Amit
-      - DB_PASSWORD=280320084r4r4R@
-    networks:
-      - app_networks
+  
   nginx:
     image: nginx:latest
     ports:
       - "8089:80"
     depends_on:
       - go-service
-      - php-service
       - python-service
 
 volumes:
