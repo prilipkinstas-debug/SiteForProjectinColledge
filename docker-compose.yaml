@@ -28,7 +28,7 @@ services:
     environment:
       - DB_HOST=mssql
       - DB_USER=02cm
-      - DB_PASSWORD=${02cm}
+      - DB_PASSWORD=Portujhkc97Porno!
     depends_on:
       - mssql
     networks:
@@ -45,7 +45,7 @@ services:
     environment:
       - DB_HOST=mssql
       - DB_USER=Specialist
-      - DB_PASSWORD=${Specialist}
+      - DB_PASSWORD=d8k1s4f9s12g1!@
     depends_on:
       - mssql
     networks:
@@ -61,7 +61,7 @@ services:
     environment:
       - DB_HOST=mssql
       - DB_USER=Amit
-      - DB_PASSWORD=${Amit}
+      - DB_PASSWORD=280320084r4r4R@
     networks:
       - app_networks
   nginx:
@@ -75,6 +75,7 @@ services:
 
 volumes:
   mssql_data:
+
 networks:
   app_networks:
     drive: bridge
