@@ -1,0 +1,5 @@
+*.yml
+*.env
+*.env.local
+dockerfile
+*.sqlite

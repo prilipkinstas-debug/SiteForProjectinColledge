@@ -1,0 +1,86 @@
+services:
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=qweR12345678
+      - MSSQL_PID=Developer
+    ports:
+      - "1433:1433"
+    volumes:
+      - mssql_data:/var/opt/mssql
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P qweR12345678 -C -Q 'SELECT 1' || exit 1"]
+      interval: 20s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+
+  sqlite:
+    build: ./sqlite/
+    volumes:
+      - ./sqlite/ServicePrice.sqlite:/app/data
+    ports:
+      - "8089:80"
+    environment:
+      - DATA_BASE_URL=/app/data/ServicePrice.sqlite
+
+  go-service:
+    image: golang:1.22-alpine
+    working_dir: /app
+    volumes:
+      - ./go:/app
+      - ./sqlite/ServicePrice.sqlite:/app/data
+      - DATA_BASE_URL=/app/sqlite_data/ServicePrice.sqlite
+    command: >
+      sh -c "go mod tidy && go run main.go"
+    env_file:
+      - ./PasswordFile.env
+    environment:
+      - DB_HOST=mssql
+      - DB_USER=02cm
+      - DB_PASSWORD=Portujhkc97Porno!
+    depends_on:
+      mssql:
+        condition: service_healthy
+      
+
+    networks:
+      - app_networks
+        
+  python-service:
+    image: python:3.11-slim
+    working_dir: /app
+    volumes:
+      - ./python:/app
+      - ./sqlite/ServicePrice.sqlite:/app/data
+    command: bash -c "pip install pymssql && python app.py"
+    env_file:
+      - ./PasswordFile.env
+    environment:
+      - DB_HOST=mssql
+      - DB_USER=Specialist
+      - DB_PASSWORD=d8k1s4f9s12g1!@
+      - DATA_BASE_URL=/app/sqlite_data/ServicePrice.sqlite
+    depends_on:
+      mssql:
+        condition: service_healthy
+    networks:
+      - app_networks
+  
+  nginx:
+    image: nginx:latest
+    ports:
+      - "8089:80"
+    volumes:
+      - ./html:/usr/share/nginx/html:ro
+    depends_on:
+      - go-service
+      - python-service
+
+volumes:
+  mssql_data:
+
+networks:
+  app_networks:
+
