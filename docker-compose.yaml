@@ -20,7 +20,7 @@ services:
     image: golang:1.22-alpine
     working_dir: /app
     volumes:
-      -
+      -./go:/app
     command: >
       sh -c "go mod tidy && go run main.go"
     environment:
@@ -36,7 +36,7 @@ services:
     image: python:3.11-slim
     working_dir: /app
     volumes:
-      -
+      -./python:/app
     command: bash -c "pip install pymssql && python app.py"
     environment:
       - DB_HOST=mssql
@@ -51,7 +51,7 @@ services:
     depends_on:
       - mssql
     volumes:
-      -
+      -./php:/var/www/html
     environment:
       - DB_HOST=mssql
       - DB_USER=Amit
