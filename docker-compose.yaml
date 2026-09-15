@@ -23,6 +23,8 @@ services:
       -./go:/app
     command: >
       sh -c "go mod tidy && go run main.go"
+    env_file:
+      - ./PasswordFile.env
     environment:
       - DB_HOST=mssql
       - DB_USER=02cm
@@ -38,6 +40,8 @@ services:
     volumes:
       -./python:/app
     command: bash -c "pip install pymssql && python app.py"
+    env_file:
+      - ./PasswordFile.env
     environment:
       - DB_HOST=mssql
       - DB_USER=Specialist
@@ -52,6 +56,8 @@ services:
       - mssql
     volumes:
       -./php:/var/www/html
+    env_file:
+      - ./PasswordFile.env
     environment:
       - DB_HOST=mssql
       - DB_USER=Amit
