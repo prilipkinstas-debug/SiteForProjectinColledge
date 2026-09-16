@@ -72,6 +72,8 @@ services:
     depends_on:
       - go-service
       - python-service
+    networks:
+      - app_networks
 
 volumes:
   mssql_data:
