@@ -16,14 +16,7 @@ services:
       retries: 10
       start_period: 30s
 
-  sqlite:
-    build: ./sqlite/
-    volumes:
-      - ./sqlite/ServicePrice.sqlite:/app/data
-    ports:
-      - "8089:80"
-    environment:
-      - DATA_BASE_URL=/app/data/ServicePrice.sqlite
+ 
 
   go-service:
     image: golang:1.22-alpine
@@ -31,7 +24,7 @@ services:
     volumes:
       - ./go:/app
       - ./sqlite/ServicePrice.sqlite:/app/data
-      - DATA_BASE_URL=/app/sqlite_data/ServicePrice.sqlite
+     
     command: >
       sh -c "go mod tidy && go run main.go"
     env_file:
@@ -40,6 +33,7 @@ services:
       - DB_HOST=mssql
       - DB_USER=02cm
       - DB_PASSWORD=Portujhkc97Porno!
+      - DATA_BASE_URL=/app/data/ServicePrice.sqlite
     depends_on:
       mssql:
         condition: service_healthy
