@@ -1,0 +1,1813 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Вектор — Страховое агентство</title>
+    <meta name="description" content="Страховое агентство «Вектор». ОСАГО, КАСКО, страхование жизни, недвижимости, путешествий и имущества.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header class="header" id="header">
+    <div class="container header__inner">
+
+        <!-- LOGO -->
+        <a href="#" class="logo" aria-label="Вектор — на главную">
+
+            <svg
+                class="logo__icon"
+                viewBox="0 0 90 90"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+            >
+                <path
+                    d="M45 3L82 20V49C82 67 67 81 45 88C23 81 8 67 8 49V20Z"
+                    fill="none"
+                    stroke="#2C2C2C"
+                    stroke-width="4"
+                    stroke-linejoin="round"
+                />
+
+                <path
+                    d="M23 52L45 31L62 48"
+                    fill="none"
+                    stroke="#C4704B"
+                    stroke-width="6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                />
+
+                <path
+                    d="M45 31V69"
+                    fill="none"
+                    stroke="#C4704B"
+                    stroke-width="6"
+                    stroke-linecap="round"
+                />
+            </svg>
+
+            <span class="logo__content">
+                <span class="logo__title">Вектор</span>
+                <span class="logo__subtitle">СТРАХОВОЕ АГЕНТСТВО</span>
+            </span>
+
+        </a>
+
+        <!-- MOBILE BURGER -->
+        <button
+            class="burger"
+            id="burger"
+            type="button"
+            aria-label="Открыть меню"
+            aria-expanded="false"
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <!-- NAVIGATION -->
+        <nav class="navigation" id="navigation">
+
+            <ul class="navigation__list">
+
+                <!-- О НАС -->
+                <li class="navigation__item navigation__item--dropdown">
+
+                    <button class="navigation__link navigation__link--button" type="button">
+                        О нас
+                        <span class="navigation__arrow">⌄</span>
+                    </button>
+
+                    <ul class="dropdown-menu">
+
+                        <li>
+                            <a href="#">История компании</a>
+                        </li>
+
+                        <li>
+                            <a href="#">Команда</a>
+                        </li>
+
+                        <li>
+                            <a href="#">Лицензии и сертификаты</a>
+                        </li>
+
+                        <li>
+                            <a href="#">Партнёры</a>
+                        </li>
+
+                    </ul>
+
+                </li>
+
+
+                <!-- СТРАХОВАНИЕ -->
+                <li class="navigation__item navigation__item--dropdown">
+
+                    <button class="navigation__link navigation__link--button" type="button">
+                        Страхование
+                        <span class="navigation__arrow">⌄</span>
+                    </button>
+
+                    <ul class="dropdown-menu">
+
+                        <li>
+                            <a href="#">Автострахование</a>
+                        </li>
+
+                        <li>
+                            <a href="#">ОСАГО</a>
+                        </li>
+
+                        <li>
+                            <a href="#">КАСКО</a>
+                        </li>
+
+                        <li>
+                            <a href="#">Страхование жизни и здоровья</a>
+                        </li>
+
+                        <li>
+                            <a href="#">Страхование недвижимости</a>
+                        </li>
+
+                        <li>
+                            <a href="#">Страхование путешествий</a>
+                        </li>
+
+                        <li>
+                            <a href="#">Страхование имущества</a>
+                        </li>
+
+                        <li>
+                            <a href="#">Корпоративное страхование</a>
+                        </li>
+
+                    </ul>
+
+                </li>
+
+
+                <!-- СЕРВИС -->
+                <li class="navigation__item navigation__item--dropdown navigation__item--service">
+
+                    <button class="navigation__link navigation__link--button" type="button">
+
+                        <span class="service-icon">⚙</span>
+
+                        Сервис
+
+                        <span class="navigation__arrow">⌄</span>
+
+                    </button>
+
+                    <ul class="dropdown-menu">
+
+                        <li>
+                            <a href="#">Вызвать оценщика</a>
+                        </li>
+
+                        <li>
+                            <a href="#">Оформить страховку</a>
+                        </li>
+
+                        <li>
+                            <a href="#">Отследить статус заявки</a>
+                        </li>
+
+                        <li>
+                            <a href="#">Вызвать аварийного комиссара</a>
+                        </li>
+
+                        <li>
+                            <a href="#">Записаться на осмотр автомобиля</a>
+                        </li>
+
+                        <li>
+                            <a href="#">Подать заявление на выплату</a>
+                        </li>
+
+                    </ul>
+
+                </li>
+
+
+                <!-- КЛИЕНТАМ -->
+                <li class="navigation__item navigation__item--dropdown">
+
+                    <button class="navigation__link navigation__link--button" type="button">
+                        Клиентам
+                        <span class="navigation__arrow">⌄</span>
+                    </button>
+
+                    <ul class="dropdown-menu">
+
+                        <li>
+                            <a href="#">Личный кабинет</a>
+                        </li>
+
+                        <li>
+                            <a href="#">Калькулятор страховки</a>
+                        </li>
+
+                        <li>
+                            <a href="#">Как получить выплату</a>
+                        </li>
+
+                        <li>
+                            <a href="#">FAQ</a>
+                        </li>
+
+                        <li>
+                            <a href="#">Новости и акции</a>
+                        </li>
+
+                    </ul>
+
+                </li>
+
+
+                <!-- КОНТАКТЫ -->
+                <li class="navigation__item navigation__item--dropdown">
+
+                    <button class="navigation__link navigation__link--button" type="button">
+                        Контакты
+                        <span class="navigation__arrow">⌄</span>
+                    </button>
+
+                    <ul class="dropdown-menu">
+
+                        <li>
+                            <a href="#">Адреса офисов</a>
+                        </li>
+
+                        <li>
+                            <a href="tel:88005553535">
+                                Горячая линия
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">Форма обратной связи</a>
+                        </li>
+
+                    </ul>
+
+                </li>
+
+            </ul>
+
+        </nav>
+
+        <!-- HEADER CTA -->
+        <a href="#consultation" class="header__button">
+            Получить консультацию
+        </a>
+
+    </div>
+</header>
+
+
+<!-- =========================================================
+     MAIN
+========================================================= -->
+
+<main>
+
+
+<!-- =========================================================
+     HERO / SLIDER
+========================================================= -->
+
+<section class="hero" id="hero">
+
+    <div class="slider" id="insuranceSlider">
+
+        <!-- SLIDE 1 -->
+        <article class="slide slide--active">
+
+            <div class="slide__image slide__image--osago"></div>
+
+            <div class="slide__content">
+
+                <span class="slide__eyebrow">
+                    ОСАГО
+                </span>
+
+                <h1 class="slide__title">
+                    Обязательное<br>
+                    автострахование
+                </h1>
+
+                <p class="slide__description">
+                    Быстрое оформление полиса ОСАГО
+                    онлайн за 5 минут.
+                </p>
+
+                <a href="#" class="button button--primary">
+                    Рассчитать стоимость
+                    <span>→</span>
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <!-- SLIDE 2 -->
+        <article class="slide">
+
+            <div class="slide__image slide__image--casco"></div>
+
+            <div class="slide__content">
+
+                <span class="slide__eyebrow">
+                    КАСКО
+                </span>
+
+                <h2 class="slide__title">
+                    Полная защита<br>
+                    вашего автомобиля
+                </h2>
+
+                <p class="slide__description">
+                    КАСКО от ведущих страховых компаний
+                    с выгодой до 30%.
+                </p>
+
+                <a href="#" class="button button--primary">
+                    Узнать подробнее
+                    <span>→</span>
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <!-- SLIDE 3 -->
+        <article class="slide">
+
+            <div class="slide__image slide__image--life"></div>
+
+            <div class="slide__content">
+
+                <span class="slide__eyebrow">
+                    ЖИЗНЬ И ЗДОРОВЬЕ
+                </span>
+
+                <h2 class="slide__title">
+                    Защита для вас<br>
+                    и вашей семьи
+                </h2>
+
+                <p class="slide__description">
+                    Накопительное и рисковое
+                    страхование жизни.
+                </p>
+
+                <a href="#" class="button button--primary">
+                    Подобрать программу
+                    <span>→</span>
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <!-- SLIDE 4 -->
+        <article class="slide">
+
+            <div class="slide__image slide__image--home"></div>
+
+            <div class="slide__content">
+
+                <span class="slide__eyebrow">
+                    НЕДВИЖИМОСТЬ
+                </span>
+
+                <h2 class="slide__title">
+                    Ваш дом под<br>
+                    надёжной защитой
+                </h2>
+
+                <p class="slide__description">
+                    Страхование квартиры, дома, дачи
+                    от всех основных рисков.
+                </p>
+
+                <a href="#" class="button button--primary">
+                    Оформить полис
+                    <span>→</span>
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <!-- SLIDE 5 -->
+        <article class="slide">
+
+            <div class="slide__image slide__image--travel"></div>
+
+            <div class="slide__content">
+
+                <span class="slide__eyebrow">
+                    ПУТЕШЕСТВИЯ
+                </span>
+
+                <h2 class="slide__title">
+                    Путешествуйте<br>
+                    без забот
+                </h2>
+
+                <p class="slide__description">
+                    Медицинская страховка
+                    для выезда за рубеж.
+                </p>
+
+                <a href="#" class="button button--primary">
+                    Купить онлайн
+                    <span>→</span>
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <!-- SLIDE 6 -->
+        <article class="slide">
+
+            <div class="slide__image slide__image--property"></div>
+
+            <div class="slide__content">
+
+                <span class="slide__eyebrow">
+                    ИМУЩЕСТВО
+                </span>
+
+                <h2 class="slide__title">
+                    Защитите то,<br>
+                    что вам дорого
+                </h2>
+
+                <p class="slide__description">
+                    Страхование техники,
+                    оборудования и товаров.
+                </p>
+
+                <a href="#" class="button button--primary">
+                    Получить консультацию
+                    <span>→</span>
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <!-- SLIDER ARROWS -->
+
+        <button
+            class="slider__arrow slider__arrow--prev"
+            id="sliderPrev"
+            type="button"
+            aria-label="Предыдущий слайд"
+        >
+            ←
+        </button>
+
+        <button
+            class="slider__arrow slider__arrow--next"
+            id="sliderNext"
+            type="button"
+            aria-label="Следующий слайд"
+        >
+            →
+        </button>
+
+
+        <!-- SLIDER DOTS -->
+
+        <div class="slider__dots" id="sliderDots">
+
+            <button
+                class="slider__dot slider__dot--active"
+                type="button"
+                data-slide="0"
+                aria-label="Слайд 1"
+            ></button>
+
+            <button
+                class="slider__dot"
+                type="button"
+                data-slide="1"
+                aria-label="Слайд 2"
+            ></button>
+
+            <button
+                class="slider__dot"
+                type="button"
+                data-slide="2"
+                aria-label="Слайд 3"
+            ></button>
+
+            <button
+                class="slider__dot"
+                type="button"
+                data-slide="3"
+                aria-label="Слайд 4"
+            ></button>
+
+            <button
+                class="slider__dot"
+                type="button"
+                data-slide="4"
+                aria-label="Слайд 5"
+            ></button>
+
+            <button
+                class="slider__dot"
+                type="button"
+                data-slide="5"
+                aria-label="Слайд 6"
+            ></button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     ADVANTAGES
+========================================================= -->
+
+<section class="advantages section">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <span class="section-heading__label">
+                ПОЧЕМУ «ВЕКТОР»
+            </span>
+
+            <h2 class="section-heading__title">
+                Страхование<br>
+                с человеческим лицом
+            </h2>
+
+            <p class="section-heading__text">
+                Мы не просто оформляем полисы —
+                мы помогаем подобрать защиту,
+                которая действительно подходит вам.
+            </p>
+
+        </div>
+
+
+        <div class="advantages__grid">
+
+            <article class="advantage">
+
+                <div class="advantage__number">
+                    01
+                </div>
+
+                <div class="advantage__icon">
+                    <svg viewBox="0 0 64 64" fill="none">
+                        <path d="M32 5L55 15V30C55 44 46 54 32 59C18 54 9 44 9 30V15L32 5Z"
+                              stroke="currentColor"
+                              stroke-width="2.5"/>
+                        <path d="M21 32L28 39L44 23"
+                              stroke="currentColor"
+                              stroke-width="2.5"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"/>
+                    </svg>
+                </div>
+
+                <h3>
+                    15 лет на рынке
+                </h3>
+
+                <p>
+                    Работаем с 2010 года и знаем
+                    страховой рынок изнутри.
+                </p>
+
+            </article>
+
+
+            <article class="advantage">
+
+                <div class="advantage__number">
+                    02
+                </div>
+
+                <div class="advantage__icon">
+                    <svg viewBox="0 0 64 64" fill="none">
+                        <circle cx="22" cy="22" r="9"
+                                stroke="currentColor"
+                                stroke-width="2.5"/>
+                        <circle cx="42" cy="22" r="9"
+                                stroke="currentColor"
+                                stroke-width="2.5"/>
+                        <path d="M7 52C8 41 14 36 22 36C30 36 36 41 37 52"
+                              stroke="currentColor"
+                              stroke-width="2.5"/>
+                        <path d="M32 38C35 36 39 36 42 36C50 36 56 41 57 52"
+                              stroke="currentColor"
+                              stroke-width="2.5"/>
+                    </svg>
+                </div>
+
+                <h3>
+                    50+ страховых компаний
+                </h3>
+
+                <p>
+                    Сравниваем предложения и
+                    подбираем подходящие условия.
+                </p>
+
+            </article>
+
+
+            <article class="advantage">
+
+                <div class="advantage__number">
+                    03
+                </div>
+
+                <div class="advantage__icon">
+                    <svg viewBox="0 0 64 64" fill="none">
+                        <circle cx="32" cy="32" r="25"
+                                stroke="currentColor"
+                                stroke-width="2.5"/>
+                        <path d="M32 17V32L42 39"
+                              stroke="currentColor"
+                              stroke-width="2.5"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"/>
+                    </svg>
+                </div>
+
+                <h3>
+                    Выплаты за 3 дня
+                </h3>
+
+                <p>
+                    Помогаем пройти процедуру
+                    страховой выплаты без лишней бюрократии.
+                </p>
+
+            </article>
+
+
+            <article class="advantage">
+
+                <div class="advantage__number">
+                    04
+                </div>
+
+                <div class="advantage__icon">
+                    <svg viewBox="0 0 64 64" fill="none">
+                        <path d="M32 55C44 43 51 36 51 25C51 14 43 7 32 7C21 7 13 14 13 25C13 36 20 43 32 55Z"
+                              stroke="currentColor"
+                              stroke-width="2.5"/>
+                        <circle cx="32" cy="25" r="7"
+                                stroke="currentColor"
+                                stroke-width="2.5"/>
+                    </svg>
+                </div>
+
+                <h3>
+                    Персональный подход
+                </h3>
+
+                <p>
+                    Ваш личный специалист всегда
+                    на связи и знает вашу ситуацию.
+                </p>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     PRODUCTS
+========================================================= -->
+
+<section class="products section section--sand">
+
+    <div class="container">
+
+        <div class="section-heading section-heading--center">
+
+            <span class="section-heading__label">
+                СТРАХОВЫЕ ПРОДУКТЫ
+            </span>
+
+            <h2 class="section-heading__title">
+                Выберите свою защиту
+            </h2>
+
+            <p class="section-heading__text">
+                Простые решения для важных вещей
+                и жизненных ситуаций.
+            </p>
+
+        </div>
+
+
+        <div class="products__grid">
+
+
+            <!-- OSAGO -->
+            <article class="product-card">
+
+                <div class="product-card__visual product-card__visual--car">
+
+                    <span class="product-card__badge">
+                        Популярное
+                    </span>
+
+                    <svg viewBox="0 0 120 80" fill="none">
+                        <path d="M12 53H108"
+                              stroke="currentColor"
+                              stroke-width="3"
+                              stroke-linecap="round"/>
+
+                        <path d="M22 53L29 32H83L98 53"
+                              stroke="currentColor"
+                              stroke-width="3"
+                              stroke-linejoin="round"/>
+
+                        <circle cx="32" cy="55" r="7"
+                                stroke="currentColor"
+                                stroke-width="3"/>
+
+                        <circle cx="89" cy="55" r="7"
+                                stroke="currentColor"
+                                stroke-width="3"/>
+
+                        <path d="M38 40H78"
+                              stroke="currentColor"
+                              stroke-width="3"/>
+                    </svg>
+
+                </div>
+
+                <div class="product-card__body">
+
+                    <span class="product-card__category">
+                        АВТО
+                    </span>
+
+                    <h3>
+                        ОСАГО
+                    </h3>
+
+                    <p>
+                        Обязательное страхование
+                        автогражданской ответственности.
+                    </p>
+
+                    <a href="#" class="product-card__link">
+                        Рассчитать →
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <!-- CASCO -->
+            <article class="product-card">
+
+                <div class="product-card__visual product-card__visual--casco">
+
+                    <svg viewBox="0 0 120 80" fill="none">
+                        <path d="M12 53H108"
+                              stroke="currentColor"
+                              stroke-width="3"
+                              stroke-linecap="round"/>
+
+                        <path d="M22 53L29 32H83L98 53"
+                              stroke="currentColor"
+                              stroke-width="3"/>
+
+                        <circle cx="32" cy="55" r="7"
+                                stroke="currentColor"
+                                stroke-width="3"/>
+
+                        <circle cx="89" cy="55" r="7"
+                                stroke="currentColor"
+                                stroke-width="3"/>
+
+                        <path d="M54 23L61 30L74 17"
+                              stroke="currentColor"
+                              stroke-width="3"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"/>
+                    </svg>
+
+                </div>
+
+                <div class="product-card__body">
+
+                    <span class="product-card__category">
+                        АВТО
+                    </span>
+
+                    <h3>
+                        КАСКО
+                    </h3>
+
+                    <p>
+                        Полная защита автомобиля
+                        от основных рисков.
+                    </p>
+
+                    <a href="#" class="product-card__link">
+                        Рассчитать →
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <!-- LIFE -->
+            <article class="product-card">
+
+                <div class="product-card__visual product-card__visual--life">
+
+                    <svg viewBox="0 0 120 80" fill="none">
+                        <path d="M60 66C42 51 27 41 27 26C27 17 34 11 43 11C51 11 57 16 60 22C63 16 69 11 77 11C86 11 93 17 93 26C93 41 78 51 60 66Z"
+                              stroke="currentColor"
+                              stroke-width="3"
+                              stroke-linejoin="round"/>
+                    </svg>
+
+                </div>
+
+                <div class="product-card__body">
+
+                    <span class="product-card__category">
+                        ЛИЧНОЕ
+                    </span>
+
+                    <h3>
+                        Жизнь и здоровье
+                    </h3>
+
+                    <p>
+                        Финансовая защита
+                        вас и вашей семьи.
+                    </p>
+
+                    <a href="#" class="product-card__link">
+                        Подробнее →
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <!-- HOME -->
+            <article class="product-card">
+
+                <div class="product-card__visual product-card__visual--home">
+
+                    <svg viewBox="0 0 120 80" fill="none">
+                        <path d="M15 40L60 10L105 40"
+                              stroke="currentColor"
+                              stroke-width="3"
+                              stroke-linejoin="round"/>
+
+                        <path d="M24 35V68H96V35"
+                              stroke="currentColor"
+                              stroke-width="3"/>
+
+                        <path d="M50 68V48H70V68"
+                              stroke="currentColor"
+                              stroke-width="3"/>
+                    </svg>
+
+                </div>
+
+                <div class="product-card__body">
+
+                    <span class="product-card__category">
+                        ИМУЩЕСТВО
+                    </span>
+
+                    <h3>
+                        Недвижимость
+                    </h3>
+
+                    <p>
+                        Защитите квартиру, дом
+                        или дачу от непредвиденных ситуаций.
+                    </p>
+
+                    <a href="#" class="product-card__link">
+                        Подробнее →
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <!-- TRAVEL -->
+            <article class="product-card">
+
+                <div class="product-card__visual product-card__visual--travel">
+
+                    <svg viewBox="0 0 120 80" fill="none">
+                        <path d="M18 51H102"
+                              stroke="currentColor"
+                              stroke-width="3"
+                              stroke-linecap="round"/>
+
+                        <path d="M28 51L44 37H87L98 51"
+                              stroke="currentColor"
+                              stroke-width="3"
+                              stroke-linejoin="round"/>
+
+                        <path d="M58 37L64 17L70 37"
+                              stroke="currentColor"
+                              stroke-width="3"
+                              stroke-linejoin="round"/>
+                    </svg>
+
+                </div>
+
+                <div class="product-card__body">
+
+                    <span class="product-card__category">
+                        ПУТЕШЕСТВИЯ
+                    </span>
+
+                    <h3>
+                        Туристическая страховка
+                    </h3>
+
+                    <p>
+                        Медицинская защита
+                        во время путешествий.
+                    </p>
+
+                    <a href="#" class="product-card__link">
+                        Купить онлайн →
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <!-- BUSINESS -->
+            <article class="product-card">
+
+                <div class="product-card__visual product-card__visual--business">
+
+                    <svg viewBox="0 0 120 80" fill="none">
+                        <rect x="18" y="25"
+                              width="84"
+                              height="45"
+                              rx="2"
+                              stroke="currentColor"
+                              stroke-width="3"/>
+
+                        <path d="M42 25V17H78V25"
+                              stroke="currentColor"
+                              stroke-width="3"/>
+
+                        <path d="M18 43H102"
+                              stroke="currentColor"
+                              stroke-width="3"/>
+                    </svg>
+
+                </div>
+
+                <div class="product-card__body">
+
+                    <span class="product-card__category">
+                        БИЗНЕС
+                    </span>
+
+                    <h3>
+                        Корпоративное страхование
+                    </h3>
+
+                    <p>
+                        Комплексная защита
+                        бизнеса и сотрудников.
+                    </p>
+
+                    <a href="#" class="product-card__link">
+                        Узнать больше →
+                    </a>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     CALCULATOR CTA
+========================================================= -->
+
+<section class="calculator-cta section">
+
+    <div class="container">
+
+        <div class="calculator-cta__box">
+
+            <div class="calculator-cta__content">
+
+                <span class="section-heading__label">
+                    КАЛЬКУЛЯТОР
+                </span>
+
+                <h2>
+                    Узнайте стоимость
+                    страховки
+                </h2>
+
+                <p>
+                    Ответьте на несколько простых вопросов —
+                    и мы рассчитаем ориентировочную стоимость
+                    полиса.
+                </p>
+
+                <a href="#" class="button button--primary">
+                    Рассчитать стоимость
+                    <span>→</span>
+                </a>
+
+            </div>
+
+            <div class="calculator-cta__decor">
+
+                <div class="decor-circle decor-circle--one"></div>
+                <div class="decor-circle decor-circle--two"></div>
+
+                <svg viewBox="0 0 180 180" fill="none">
+
+                    <path
+                        d="M90 12L150 36V78C150 119 125 145 90 162C55 145 30 119 30 78V36L90 12Z"
+                        stroke="currentColor"
+                        stroke-width="2"
+                    />
+
+                    <path
+                        d="M63 90L81 108L119 68"
+                        stroke="currentColor"
+                        stroke-width="5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    />
+
+                </svg>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     REVIEWS
+========================================================= -->
+
+<section class="reviews section section--sand">
+
+    <div class="container">
+
+        <div class="section-heading section-heading--center">
+
+            <span class="section-heading__label">
+                ОТЗЫВЫ
+            </span>
+
+            <h2 class="section-heading__title">
+                Нам доверяют
+            </h2>
+
+        </div>
+
+
+        <div class="reviews-slider" id="reviewsSlider">
+
+
+            <article class="review review--active">
+
+                <div class="review__quote">
+                    “
+                </div>
+
+                <p class="review__text">
+                    Оформляли КАСКО всей семьёй.
+                    Специалист всё подробно объяснил,
+                    сравнил несколько вариантов и помог
+                    выбрать подходящий.
+                </p>
+
+                <div class="review__author">
+
+                    <div class="review__avatar">
+                        А
+                    </div>
+
+                    <div>
+                        <strong>
+                            Анна Смирнова
+                        </strong>
+
+                        <span>
+                            Москва
+                        </span>
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <article class="review">
+
+                <div class="review__quote">
+                    “
+                </div>
+
+                <p class="review__text">
+                    После ДТП не пришлось разбираться
+                    со всем самостоятельно. В «Векторе»
+                    подсказали, какие документы нужны,
+                    и помогли пройти процедуру.
+                </p>
+
+                <div class="review__author">
+
+                    <div class="review__avatar">
+                        И
+                    </div>
+
+                    <div>
+                        <strong>
+                            Игорь Петров
+                        </strong>
+
+                        <span>
+                            Казань
+                        </span>
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <article class="review">
+
+                <div class="review__quote">
+                    “
+                </div>
+
+                <p class="review__text">
+                    За один визит сравнили предложения
+                    нескольких компаний и оформили полис.
+                    Очень спокойный и понятный сервис.
+                </p>
+
+                <div class="review__author">
+
+                    <div class="review__avatar">
+                        М
+                    </div>
+
+                    <div>
+                        <strong>
+                            Марина Волкова
+                        </strong>
+
+                        <span>
+                            Санкт-Петербург
+                        </span>
+                    </div>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+
+        <div class="reviews-slider__controls">
+
+            <button
+                type="button"
+                id="reviewPrev"
+                aria-label="Предыдущий отзыв"
+            >
+                ←
+            </button>
+
+            <button
+                type="button"
+                id="reviewNext"
+                aria-label="Следующий отзыв"
+            >
+                →
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     NEWS
+========================================================= -->
+
+<section class="news section">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <span class="section-heading__label">
+                БЛОГ
+            </span>
+
+            <h2 class="section-heading__title">
+                Новости и полезное
+            </h2>
+
+        </div>
+
+
+        <div class="news__grid">
+
+
+            <article class="news-card">
+
+                <div class="news-card__image news-card__image--one">
+
+                    <span>
+                        15.09.2026
+                    </span>
+
+                </div>
+
+                <div class="news-card__body">
+
+                    <span class="news-card__category">
+                        АВТО
+                    </span>
+
+                    <h3>
+                        Что изменилось
+                        в страховании автомобиля
+                    </h3>
+
+                    <p>
+                        Разбираемся в основных изменениях
+                        и отвечаем на частые вопросы.
+                    </p>
+
+                    <a href="#">
+                        Читать →
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <article class="news-card">
+
+                <div class="news-card__image news-card__image--two">
+
+                    <span>
+                        12.09.2026
+                    </span>
+
+                </div>
+
+                <div class="news-card__body">
+
+                    <span class="news-card__category">
+                        СЕМЬЯ
+                    </span>
+
+                    <h3>
+                        Как защитить семью
+                        финансово
+                    </h3>
+
+                    <p>
+                        Какие виды страхования помогут
+                        создать дополнительную защиту.
+                    </p>
+
+                    <a href="#">
+                        Читать →
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <article class="news-card">
+
+                <div class="news-card__image news-card__image--three">
+
+                    <span>
+                        08.09.2026
+                    </span>
+
+                </div>
+
+                <div class="news-card__body">
+
+                    <span class="news-card__category">
+                        БИЗНЕС
+                    </span>
+
+                    <h3>
+                        Страхование бизнеса:
+                        что важно знать
+                    </h3>
+
+                    <p>
+                        Рассказываем о распространённых
+                        рисках и способах защиты.
+                    </p>
+
+                    <a href="#">
+                        Читать →
+                    </a>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     CONSULTATION CTA
+========================================================= -->
+
+<section class="consultation section" id="consultation">
+
+    <div class="container">
+
+        <div class="consultation__box">
+
+            <div class="consultation__content">
+
+                <span class="section-heading__label">
+                    ПЕРСОНАЛЬНАЯ КОНСУЛЬТАЦИЯ
+                </span>
+
+                <h2>
+                    Не знаете,
+                    какая страховка вам нужна?
+                </h2>
+
+                <p>
+                    Оставьте заявку — наш специалист
+                    свяжется с вами и поможет разобраться
+                    в вариантах.
+                </p>
+
+            </div>
+
+
+            <form class="consultation-form" id="consultationForm">
+
+                <div class="form-group">
+
+                    <label for="name">
+                        Ваше имя
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="Введите имя"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="phone">
+                        Телефон
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        placeholder="+7 (___) ___-__-__"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="insurance">
+                        Что вас интересует?
+                    </label>
+
+                    <select
+                        id="insurance"
+                        name="insurance"
+                    >
+
+                        <option value="">
+                            Выберите вариант
+                        </option>
+
+                        <option value="osago">
+                            ОСАГО
+                        </option>
+
+                        <option value="casco">
+                            КАСКО
+                        </option>
+
+                        <option value="life">
+                            Жизнь и здоровье
+                        </option>
+
+                        <option value="home">
+                            Недвижимость
+                        </option>
+
+                        <option value="travel">
+                            Путешествия
+                        </option>
+
+                        <option value="property">
+                            Имущество
+                        </option>
+
+                        <option value="business">
+                            Корпоративное страхование
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <label class="checkbox">
+
+                    <input
+                        type="checkbox"
+                        required
+                    >
+
+                    <span>
+                        Я согласен на обработку
+                        персональных данных
+                    </span>
+
+                </label>
+
+
+                <button
+                    type="submit"
+                    class="button button--primary button--full"
+                >
+                    Получить консультацию
+                    <span>→</span>
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer class="footer">
+
+    <div class="container">
+
+        <div class="footer__grid">
+
+
+            <!-- COLUMN 1 -->
+            <div class="footer__column footer__column--about">
+
+                <a href="#" class="footer__logo">
+
+                    <svg
+                        viewBox="0 0 90 90"
+                        width="42"
+                        height="42"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+
+                        <path
+                            d="M45 3L82 20V49C82 67 67 81 45 88C23 81 8 67 8 49V20Z"
+                            fill="none"
+                            stroke="#FAF9F6"
+                            stroke-width="4"
+                        />
+
+                        <path
+                            d="M23 52L45 31L62 48"
+                            fill="none"
+                            stroke="#C4704B"
+                            stroke-width="6"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        />
+
+                        <path
+                            d="M45 31V69"
+                            stroke="#C4704B"
+                            stroke-width="6"
+                            stroke-linecap="round"
+                        />
+
+                    </svg>
+
+                    <span>
+                        Вектор
+                    </span>
+
+                </a>
+
+
+                <p>
+                    Страховое агентство «Вектор».
+                    Ваш надёжный партнёр в мире
+                    страхования с 2010 года.
+                </p>
+
+
+                <div class="socials">
+
+                    <a href="#" aria-label="VK">
+                        VK
+                    </a>
+
+                    <a href="#" aria-label="Telegram">
+                        TG
+                    </a>
+
+                    <a href="#" aria-label="WhatsApp">
+                        WA
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- COLUMN 2 -->
+            <div class="footer__column">
+
+                <h3>
+                    Услуги
+                </h3>
+
+                <ul>
+
+                    <li>
+                        <a href="#">Автострахование</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Страхование жизни</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Недвижимость</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Путешествия</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Имущество</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Корпоративное страхование</a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- COLUMN 3 -->
+            <div class="footer__column">
+
+                <h3>
+                    Клиентам
+                </h3>
+
+                <ul>
+
+                    <li>
+                        <a href="#">Личный кабинет</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Калькулятор страховки</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Как получить выплату</a>
+                    </li>
+
+                    <li>
+                        <a href="#">FAQ</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Новости</a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- COLUMN 4 -->
+            <div class="footer__column footer__column--contacts">
+
+                <h3>
+                    Контакты
+                </h3>
+
+
+                <a
+                    class="footer__phone"
+                    href="tel:88005553535"
+                >
+                    8-800-555-35-35
+                </a>
+
+                <span class="footer__hint">
+                    Бесплатно по РФ
+                </span>
+
+
+                <a
+                    href="mailto:info@vektor-insurance.ru"
+                    class="footer__email"
+                >
+                    info@vektor-insurance.ru
+                </a>
+
+
+                <address>
+                    г. Москва,<br>
+                    ул. Примерная, д. 1,<br>
+                    офис 100
+                </address>
+
+
+                <p>
+                    Пн–Пт: 9:00–19:00<br>
+                    Сб: 10:00–16:00<br>
+                    Вс: выходной
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- FOOTER BOTTOM -->
+
+        <div class="footer__bottom">
+
+            <span>
+                © 2026 Страховое агентство «Вектор».
+                Все права защищены.
+            </span>
+
+            <div class="footer__documents">
+
+                <a href="#">
+                    Политика конфиденциальности
+                </a>
+
+                <a href="#">
+                    Пользовательское соглашение
+                </a>
+
+                <a href="#">
+                    Карта сайта
+                </a>
+
+                <a href="#">
+                    Реквизиты
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- =========================================================
+     SCROLL TO TOP
+========================================================= -->
+
+<button
+    class="scroll-top"
+    id="scrollTop"
+    type="button"
+    aria-label="Наверх"
+>
+    ↑
+</button>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script src="js/script.js"></script>
+
+</body>
+</html>
