@@ -1,59 +1,80 @@
 from collections import defaultdict
+from contextlib import closing
+from datetime import datetime, timezone
 from decimal import Decimal, ROUND_HALF_UP
 from getpass import getpass
+from os import environ
+from pathlib import Path
 from statistics import median
-import pyodbc
+import sqlite3
+import mysql.connector
 
-Server="192.168.5.128,1433"
-Login="Specialist"
-SOURCE_DATEBASE=""
-TARGET_DATABASE=""
-SOURCE_TABLE=""
-ID_COLUMN="ProductId"
-Price_COLUMN="Price"
-TARGET_TABLE="ReadyPrices"
+
+MYSQL_HOST = ""         #Адрес сервера Mysql
+MYSQL_PORT = 3306       #порт
+MYSQL_USER = ""         #Логин Mysql
+SOURCE_DATABASE = ""    #Название базы
+SOURCE_TABLE = ""       #таблица с исходными ценами
+ID_COLUMN = "ProductId" #Реальное название столбца товара
+PRICE_COLUMN = "Price"  #Реальное название столбца цены
+SQLITE_FILE = Path(__file__).resolve().with_name("prices.db")
+
 
 def sql_name(value):
-    return "[" + value.replace("]", "]]") + "]"
+    return "`" + value.replace("`", "``") + "`"
 
-def odbc_value(value):
-    return "{" + value.replace("}", "}}") + "}"
 
-if not all((SOURCE_DATEBASE, TARGET_DATABASE, SOURCE_TABLE)):
-    raise SystemExit("Заполни Source_database, target_database, source_table")
-if SOURCE_DATEBASE.casefold() == TARGET_DATABASE.casefold():
-    raise SystemExit("Для результата укажи другую базу данных")
-drivers = pyodbc.drivers()
-driver = next((name for name in ("ODBC Drive 18 for SQL Server", "ODBC Driver 17 for SQL Server")
-               if name in drivers), None)
-if driver is None:
-    raise SystemExit("Установи Microsoft ODBC Driver 18 for SQL Server(x64).")
-password = getpass("Пароль SQL Server для Specialist: ")
-connection = pyodbc.connect(f"DRIVER={odbc_value(driver)}; SERVER={odbc_value(Server)};"f"DATABASE={odbc_value(TARGET_DATABASE)}; UID={odbc_value(Login)};"f"PWD={odbc_value(password)}; Encrypt=yes;TrustServerCertificate=no;", timeout=10, autocommit=False,)
-try:
-    connection.timeout = 60
-    cursor = connection.cursor()
-    cursor.execute("SET NOCOUNT ON; SET XACT_ABORT ON;")
+def main():
+    if not all((MYSQL_HOST, MYSQL_USER, SOURCE_DATABASE, SOURCE_TABLE)):
+        raise SystemExit("Заполни MYSQL_HOST, MYSQL_USER, SOURCE_DATABASE, SOURCE_TABLE.")
+    password = environ.get("MYSQL_PASSWORD")
+    if password is None:
+        password = getpass("Пароль MySQL: ")
 
-    source = f"{sql_name(SOURCE_DATEBASE)}.[dbo].{sql_name(SOURCE_TABLE)}" 
-    item, price = sql_name(Price_COLUMN)
-    cursor.execute(f"SELECT{item}, {price} FROM {source}" f"WHERE{item} IS NOT NULL AND {price} > 0;")
-    prices_by_product=defaultdict(list)
-    for product_id, value in cursor:
-        prices_by_product[str(product_id)].append(Decimal(str(value)))
-        target = f"[dbo].{sql_name(TARGET_DATABASE)}"
-        cursor.execute(f"""
-        IF OBJECT_ID(?, 'U') IS NULL CREATE TABLE {target}(ProductId nvarchar(255) COLLATE Latin1_General_100_BIN2 PRIMARY KEY, Price decimal(28, 2) NOT NULL); """, target)
-        for product_id in sorted(prices_by_product):
-            prices = prices_by_product[product_id]
-            final_price = (median(prices) * Decimal("0.95")).quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
-            cursor.execute(f""" UPDATE {target} WITH (UPDLOCK, HOLDLOCK) SET Price = ? WHERE ProductId = ?; IF @@ROWCOUNT = 0 INSERT INTO {target}(ProductId, Price) VALUES (?, ?);""", final_price, product_id, product_id, final_price)
-            while cursor.nextset():
-                pass
-            connection.commit()
-            print(f"Готово. Сохранено товаров: {len(prices_by_product)}.")
-except BaseException:
-    connection.rollback()
-    raise
-finally:
-    connection.close()
+    prices_by_product = defaultdict(list)
+    with closing(mysql.connector.connect(
+        host=MYSQL_HOST, port=MYSQL_PORT, user=MYSQL_USER,
+        password=password, database=SOURCE_DATABASE, connection_timeout=10,
+    )) as source:
+        with closing(source.cursor()) as cursor:
+            item, price = sql_name(ID_COLUMN), sql_name(PRICE_COLUMN)
+            cursor.execute(
+                f"SELECT {item}, {price} FROM {sql_name(SOURCE_TABLE)} "
+                f"WHERE {item} IS NOT NULL AND {price} > 0"
+            )
+            for product_id, value in cursor:
+                value = Decimal(str(value))
+                if not value.is_finite():
+                    raise ValueError(f"Некорректная цена товара {product_id}")
+                prices_by_product[str(product_id)].append(value)
+
+    updated_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
+    results = []
+    for product_id, prices in prices_by_product.items():
+        final_price = (median(prices) * Decimal("0.95")).quantize(
+            Decimal("0.01"), rounding=ROUND_HALF_UP
+        )
+        results.append((product_id, str(final_price), updated_at))
+
+    # Обновляем только ReadyPrices целиком, в одной транзакции.
+    # Пустой исходный набор очищает ReadyPrices; ошибка отменяет обновление.
+    with closing(sqlite3.connect(SQLITE_FILE, timeout=30)) as target, target:
+        target.execute("BEGIN IMMEDIATE")
+        target.execute("""
+            CREATE TABLE IF NOT EXISTS ReadyPrices (
+                ProductId TEXT NOT NULL PRIMARY KEY,
+                Price TEXT NOT NULL,
+                UpdatedAt TEXT NOT NULL
+            )
+        """)
+        target.execute("DELETE FROM ReadyPrices")
+        target.executemany(
+            "INSERT INTO ReadyPrices (ProductId, Price, UpdatedAt) VALUES (?, ?, ?)",
+            results,
+        )
+    # Price — десятичная строка с двумя знаками, без погрешности float.
+    print(f"Готово. Товаров: {len(results)}. Файл: {SQLITE_FILE}")
+
+
+if __name__ == "__main__":
+    main()
